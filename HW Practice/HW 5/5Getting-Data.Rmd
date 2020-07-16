@@ -1,0 +1,54 @@
+---
+title: "Homework 5: Getting Data"
+author: 
+- Author1
+date: "`r Sys.time()`"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+# Install packages if necessary
+
+```
+
+### Step 1: Load the data
+Read	in	the	following	JSON	dataset
+https://opendata.maryland.gov/api/views/pdvh-tf2u/rows.json?accessType=DOWNLOAD
+
+```{r }
+
+```
+
+### Step 2: Clean the data
+
+After you load the data, remove the first 8 columns, and then, to make it easier to work with, name the rest of the columns as follows: Note, not surprisingly, it is in JSON format. You should be able to see that the first result is the metadata (information about the data) and the second is the actual data. 
+
+namesOfColumns <- c("CASE_NUMBER","BARRACK","ACC_DATE","ACC_TIME","ACC_TIME_CODE","DAY_OF_WEEK","ROAD","INTERSECT_ROAD",  "DIST_FROM_INTERSECT","DIST_DIRECTION","CITY_NAME","COUNTY_CODE",  "COUNTY_NAME","VEHICLE_COUNT","PROP_DEST","INJURY","COLLI SION_WITH_1","COLLISION_WITH_2")
+
+### Step 3: Understand the data using SQL (via SQLDF)
+
+How many accidents happen on SUNDAY  
+```{r}
+
+```
+
+How many accidents had injuries (might need to remove NAs from the data).  List the injuries by day. 
+
+NOTE: Explore the data using str(). You'll notice SUNDAY has extra spaces. These need to be removed... or ignored. To ignore the extra space research  and use the sql TRIM() command in your query. This transforms "   SUNDAY" to "SUNDAY" internally.
+```{r }
+
+```
+
+### Step 4: Understand the data using tapply
+
+Answer the following questions (same as before) – compare results:
+
+How	many	accidents	happen	on	Sunday  
+```{r}
+
+```
+
+How	many	accidents	had	injuries (might	need	to	remove	NAs	from	the	data). List the count of injuries by day.
+```{r }
+
+```

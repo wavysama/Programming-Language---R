@@ -1,0 +1,37 @@
+---
+title: "Homework 2: Manipulating data frames"
+author: 
+- Author1
+date: "`r Sys.time()`"
+output: html_notebook
+---
+
+
+Explore the mtcars dataset (which is already included in R). Copy the mtcars dataset into a new variable (called it myCars), so that if you mess up, you can start again very easily (by copying mtcars into myCars again).
+
+### Step 1: What is the hp (hp stands for “horse power”)
+```{r Step1, echo=TRUE}
+# 1 What is the highest hp?
+
+# 2 Which car has the highest hp?
+
+```
+
+### Step 2: Explore mpg (mpg stands for “miles per gallon”)
+```{r Step2, echo=TRUE}
+# 3 What is the highest mpg?
+# 4 Which car has the highest mpg? 
+# 5 Create a sorted dataframe, based on mpg
+```
+
+### Step 3: Which car has the "best" combination of mpg and hp? 
+
+6) What logic did you use? Note: No code is needed here just write what you would do.
+
+7) Which car?
+
+### Step 4: Which car has "best"" car combination of mpg and hp, where mpg and hp must be given equal weight? Note: This requires code.
+```{r Step4, echo=TRUE}
+
+```
+

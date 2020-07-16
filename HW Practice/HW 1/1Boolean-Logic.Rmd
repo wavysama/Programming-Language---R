@@ -1,0 +1,89 @@
+---
+title: 'Lab 1: Basic R coding'
+author:
+- YOUR NAME
+- YOUR PARTNERS NAME
+date: "`r Sys.time()`"
+output: html_notebook
+---
+
+Write	a	piece	of	R	code that	you	could	use	to	teach	a	seven-year-old	child	about	Boolean	logic. If	you	have never encountered Boolean logic before (sometimes it	is called	Boolean	 algebra),	you	will	have to look it up to discover the three essential operators (AND,	OR, NOT) and how they work.	In addition, you will	have to	discover the	"operators"	(i.e., the	special	punctuation	marks) that R uses to represent	Boolean operations.
+
+### An Example: Baa-Baa Pasture
+
+In my scenario, I want to sort sheep into different pastures based on their fleece color. Here are the coding steps that I need to accomplish this task: 
+
+  1. Create R objects for sheep that define their fleece colors 
+  2. Create R objects for pastures that define the fleece colors I want stored in the pasture  
+  3. Write three scenarios using conditional operators (AND, OR, NOT) to return the statement "Welcome to your pasture" if the condition is TRUE and the statement "This isn't your pasture" if the conditional is FALSE 
+
+#### Step 1: Create R objects for sheep that define their fleece colors 
+
+In R language you can assign variables to objects using `<-` or `=`. So if betty has black fleece, I can assign the color black to betty using the following expression: `betty_sheep <- "black"`. Vocalized as "betty_sheep gets black". Notice the quotation marks around the word black. "" helps R distinguish between characters and other objects in R.  
+
+This following code assigns the fleece color of each sheep to a unique variable:
+
+```
+# This code assigns the fleece color of each sheep to a unique variable
+betty_sheep <- "black"  
+jeff_sheep <- "brown"  
+```
+
+After running the code above, anytime I type betty_sheep the string black is returned in the console.
+
+#### Step 2: Create R objects for pastures that define the fleece colors
+
+I need to define my pastures and the fleece color that each pasture will accept. In the code below, I defined two R objects (my pasture names) and their colors.
+
+```
+# This code assigns the color accepted in the two pastures
+large_pasture <- "black"  
+small_pasture <- "brown" 
+```
+After running the code above, anytime I type small_pasture the string brown is returned.
+
+#### Step 3: Three scenarios using conditional operators (AND, OR, NOT)
+
+Sort betty_sheep AND jeff_sheep into the large_pasture using the AND operator. If both sheep fleece colors match the color in large_pasture print "Welcome to your new home," but if both sheep fleece colors do not match the color in large_pasture print "This isn't your home". 
+
+This logic can be executed using a conditional expression (an if-else statement). The syntax of an if-else statement is:
+
+```
+if (test_expression) {
+statement1
+} else {
+statement2
+}
+```
+In Baa-Baa Pasture: 
+
+- *test_expression* is: `betty_sheep == large_pasture & jeff_sheep == large_pasture`.    
+- *statement1* is: "Welcome to your new home"    
+- *statement2* is: "This isn't your home"    
+
+Note that in using the `&` operator, both conditional statements inside the test_expression need to be true for the entire test_expression to be true.
+
+Now we'll write a conditional expression (an if-else statement) that will print out the expected logic. 
+
+```
+# AND requires both statements on either side of the operator to be true for the statement to be true
+
+if (betty_sheep == large_pasture & jeff_sheep == large_pasture) 
+print ("Welcome to your pasture") 
+else print ("This isn't your pasture")
+```
+
+The expression on the left of test_expression `betty_sheep == large_pasture` is `TRUE`, however `jeff_sheep == large_pasture` is `FALSE`.  Thus, the expression `betty_sheep == large_pasture & jeff_sheep == large_pasture` is `FALSE` since, when using AND (`&`), both expressions need to be `TRUE` in order for the entire expression to be `TRUE`. 
+
+Since only one of the conditionals in `betty_sheep == large_pasture & jeff_sheep == large_pasture` is `TRUE`, this means the statement is `FALSE` and the text "This isn't your pasture" will be printed. 
+
+### Start your scenario here: 
+Now it's your turn!
+
+Take note of the line	of code	that explains the use of the AND operator. You will need to describe the use of the outcomes of OR and NOT. Keeping	your seven-year-old	in mind, write	and	submit the rest	of the code	and comments.
+
+```{r}
+
+```
+
+

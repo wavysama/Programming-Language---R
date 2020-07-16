@@ -1,0 +1,64 @@
+---
+title: "Homework 7: Working with Maps"
+author: 
+- Author1
+date: "`r Sys.time()`"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+# Install packages if necessary
+
+```
+
+
+### Step 1: Load the Data
+Download the dataset from the link below. Its a dataset of the median income by zip code (an excel file) for the United States.
+
+https://www.dropbox.com/s/w40rxdqwconh49j/MedianZIP.xlsx?dl=0 
+
+```{r}
+# 1 Read in the data to R
+# 2 Clean up the data
+  # remove any info at the front of the file that's not needed. THis will require you to explore the data
+  # FYI. You'll need to remove the commas for numbers and conver to numeric (function hints: gsub() and as.numeric() )
+  # change column names to "zip", "Median","Mean", and "Population"
+
+# 3 Install and load the "zipcode" package. There is a dataset in zipcode that contains the following information: "zip","city","state","latitude","longitude"
+
+# 4 Merge the zipcode dataframe information into one dataframe using the merge() function. FYI you'll need to clean the zipcodes in in the original data by running clean.zipcodes(zips). clean.zipcodes is a function in the zipcode package.
+
+# 5 Remove Hawaii and Alaska from the dataframe you created in #4
+```
+
+### Step 2: Show the income & population per state
+```{r}
+# 1 Create a simpler dataframe,with just the average median income and the population for each state (hint: create these seperately using tapply() and then combine them using merge() )
+  
+# 2 Add the state abbreviations and the state names as new columns  get the state name (not just the abbreviations) and make sure the state names are all lower case. You can get statenames by using calling View(state.name) its a base dataset in R
+ 
+# 3 Show the U.S. map, representing the color with the average median income of that state
+
+# 4 Show the U.S. map, with color representing the population of the state using the function tolower()
+
+```
+
+### Step 3: Show the income per zip code
+Overlay each zip code as a point on the map, where the color of the ‘dot’ is based on the median income. To make the map look appealing, have the background of the map be black.
+```{r}
+ 
+```
+
+### Step 4: Show Zip Code Density
+Now generate a different map, one where we can easily see where there are lots of zip codes, and where there are few (using the ‘stat_density2d’ function).
+```{r}
+
+```
+ 
+### Step 5: Zoom in to the region around NYC 
+Repeat steps 3 & 4, but have the map be of the northeast U.S. (centered around New York).
+```{r}
+
+```
+
+

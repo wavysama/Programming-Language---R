@@ -1,0 +1,66 @@
+---
+title: "Homework 3: Cleaning/Munging Data Frames"
+author: 
+- [YOUR NAME]
+date: "`r Sys.time()`"
+output: html_notebook
+---
+
+Often,	in	data	science,	when	you	get	a	dataset,	it	is	not	in	the	exact	format	you	want/need. So,	you	have to	refine	the	dataset	into	something	more	useful	- this	is	often	called	“data	munging”.
+
+In	this	lab,	you	need	to	read	in	a	dataset	and	work	on	that	dataset	(in	a	dataframe)	so	that	it	can	be	useful. Then,	we	will	explore	the	distribution	within	the	dataset.
+
+```{r setup, include=FALSE}
+# Install packages if necessary
+
+```
+
+### Step 1: Create a function (named readStates) to read a CSV file into R
+```{r Step1, echo=TRUE}
+# 1. Note that you are to read a URL, not a file local to your computer.
+
+# 2. Import the data. The file is a dataset	on state populations (within the United States). You should pass the URL as the argument in your readStates function. The URL: 	https://www2.census.gov/programs-surveys/popest/tables/2010-2011/state/totals/nst-est2011-02.csv
+```
+Hint:	google	“read.csv”	and	“url”	with	respect	to	R	commands
+
+### Step	2:	Clean	the	dataframe
+```{r Step2, echo=TRUE}
+# 3. Note the issues that need to be fixed (removing columns, removing rows, changing column names).
+
+# 4. Within	your function, make sure there are 51 rows (one	per	state	+	the	district of Columbia). Make sure there are only 5 columns with the	columns	having the following names ("stateName","census2010", "base2010","populationchange","percentchange").
+
+# 5. Make sure columns 2-4 are numbers (i.e. not strings).
+
+```
+
+
+### Step	3:	Store	and	Explore	the	dataset
+```{r Step3, echo=TRUE}
+# 6. Store the dataset into a dataframe, called dfStates.
+
+# 7. Test your dataframe by calculating the mean for the census2010 column in dfStates. 
+```
+
+
+### Step	4:	 Find	the	state	with	the	Highest	Population
+```{r Step4, echo=TRUE}
+# 8. Based on the census2010 data, what is the population of the state with the highest population? What is the name of that state?
+
+# 9. Sort the data, in increasing order, based on the census2010 data.	
+```
+
+
+### Step	5:	 Explore	the	distribution	of	the	states
+```{r Step5, echo=TRUE}
+# 10. Write a function that takes two parameters. The first is a vector and the second is a number.
+
+#11. The function will return the	percentage of the elements within the vector that is less than the number (i.e. the cumulative distribution below the value provided).
+
+ # 12. test the function, the result should be 0.2
+Distribution(c(1,2,3,4,5), 2)
+
+ # 13. test the function with the vector ‘dfStates$census2010’, and the mean of dfStates$census2010’.
+
+```
+
+

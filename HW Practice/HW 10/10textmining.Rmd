@@ -1,0 +1,138 @@
+---
+title: "Homework 10: Text Mining"
+author: 
+- Author1
+date: "`r Sys.time()`"
+output: html_notebook
+---
+
+Now that we are doing text mining, we will be creating our own termDocMatrix. 
+
+This was also done in class, when we analyzed the structure of the “I have a dream” speech – in terms of the use of positive and negative words. However, in that effort, we treated all positive words the same (ex. good is the same as great). This might not be appropriate – maybe we should count more positive (and negative) words more than other words. For example “I loved the movie” might be stronger than “I liked the movie”. 
+
+There is a different word file that ranks each word on a scale of -5 to 5 (negative to positive). It is known as the AFINN word list. 
+
+Your task for this homework is to adapt the lab that we did in class, to compute the score for the MLK speech using the AFINN word list (as opposed to the positive and negative word lists). 
+
+* First read in the AFINN word list. Note that each line is both a word and a score (between -5 and 5). You will need to split the line and create two vectors (one for words and one for scores). Using [AFFIN wordlist](https://cjacks04.github.io/687/Datasets/AFINN111.txt) text labels. 
+
+```{r}
+# read in the data using read.delim() 
+
+# change column names to "Word" and "Score"
+```
+
+* Compute the overall score for the MLK speech using the AFINN word list (as opposed to the positive and negative word lists). 
+```{r}
+ # read in text file MLK.txt  
+
+  # interprets each element of the "mlk" as a document and create a vector source
+
+  # create a Corpus, a "Bag of Words"
+
+ # first step transformation: make all of the letters in "words.corpus" lowercase
+
+  # second step transformation: remove the punctuation in "words.corpus"
+
+  # third step transformation: remove numbers in "words.corpus"
+
+  # final step transformation: take out the "stop" words, such as "the", "a" and "at"
+
+  # create a term-document matrix "tdm"
+
+  # convert tdm into a matrix called "m"
+
+  # create a list of counts for each word named "wordCounts"
+
+  # sort words in "wordCounts" by frequency
+
+  # check the first ten items in "wordCounts" to see if it is built correctly
+
+  # calculate the total number of words
+  
+  # create a vector that contains all the words in "wordCounts"
+
+  # locate which words in mlk speech appeared in AFINN word list
+  # returns 0 if one "mlk" word does not appeared in AFINN list
+
+  # calculate the matched words counts
+
+  # create a new dataframe that contains matched words and their counts, set ordinal numbers as row names
+
+  # change column names to "word" and "counts"
+
+  # join the dataframe "match" with "AFINN" by "word" column in match and "Word" column in AFINN
+
+  # calculate the overall score
+
+  # The overall score is 0.1343639
+  
+```
+
+* Then, just as in class, compute the sentiment score for each quarter (25%) of the speech to see how this sentiment analysis is the same or different than what was computing with just the positive and negative word files.  
+    + Note that since you will be doing almost the exact same thing 4 times (once for each quarter of the speech), you should create a function to   do most of the work, and call it 4 times. 
+
+```{r}
+  # create a function to calculate scores for each quater
+  myfunction <- function(q){
+    # interprets each element of the "mlk" as a document and create a vector source
+    words.vec <- VectorSource(mlk)
+    # create a Corpus, which is a "Bag of Words"
+    words.corpus <- Corpus(words.vec)
+    # define "cutpoint_l" as the first cut points; round the number to get an interger
+    cutpoint_l <- round(length(words.corpus)*(q-1)/4) + 1
+    # define "cutpoint_r" as the second cut points; round the number to get an interger
+    cutpoint_r <- round(length(words.corpus)*q/4)
+    # create a word corpus for for each quarter (cut by cutpoints)
+    words.corpus <- words.corpus[cutpoint_l: cutpoint_r]
+    # word corpora transformation
+    words.corpus <- tm_map(words.corpus, content_transformer(tolower))
+    words.corpus <- tm_map(words.corpus, removePunctuation)
+    words.corpus <- tm_map(words.corpus, removeNumbers)
+    words.corpus <- tm_map(words.corpus, removeWords, stopwords("english"))
+    # create term document matrix
+    tdm <- TermDocumentMatrix(words.corpus)
+    m <- as.matrix(tdm)
+    # calculate a list of counts for each word
+    wordCounts <- rowSums(m)
+    wordCounts <- sort(wordCounts, decreasing=TRUE)
+    # calculate total words
+    totalWords <- sum(wordCounts)
+    # locate the mlk words appeared in Afinn list
+    words <- names(wordCounts)
+    matched <- match(words, AFINN$Word, nomatch = 0)
+    mCounts <- wordCounts[which(matched != 0)]
+    match <- data.frame(names(mCounts),mCounts,row.names = c(1:length(mCounts)))
+    colnames(match)<-c("word","counts")
+    # merge matched words with Afinn scores
+    mergedTable <- merge(match, AFINN, by.x = "word" ,by.y = "Word")
+    # calculate the total score
+    Score <- sum(mergedTable$counts * mergedTable$Score)/totalWords
+    # return the results
+    return(Score)
+  }
+
+```
+
+    
+```{r}
+  # apply function to first quarter
+
+  # apply function to second quarter
+
+  # apply function to third quarter
+
+  # apply function to fourth quarter
+
+```
+
+* Finally, plot the results (i.e, 4 numbers) via a bar chart
+```{r}
+  # combine scores of four quarters into one dataframe
+
+  # create a bar plot for the four scores
+
+```
+
+
+
